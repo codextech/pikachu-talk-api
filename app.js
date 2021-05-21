@@ -15,13 +15,27 @@ app.use('/uploads', express.static (path.join(__dirname, './uploads'))); /* TO S
 
 
 /* conection with database */
-mongoose.connect('mongodb://localhost:27017/blog-site', {
+// mongoose.connect('mongodb://localhost:27017/blog-site', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+// }).then(result=> {
+//     console.log('db is connected');
+//     app.listen(3000 , () =>{
+//         console.log('app is running on port 3000');
+//     });
+// }).catch(err => {
+//     console.log('error ', err);
+// })
+
+/* live */
+mongoose.connect('mongodb+srv://tanzeel:codex850@cluster0.8k3yz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
 }).then(result=> {
     console.log('db is connected');
-    app.listen(3000 , () =>{
+    app.listen(process.env.PORT || 3000 , () =>{
         console.log('app is running on port 3000');
     });
 }).catch(err => {
